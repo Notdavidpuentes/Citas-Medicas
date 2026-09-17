@@ -1,0 +1,150 @@
+/* ===== Pagina principal ===== */
+*{
+   box-sizing: border-box; 
+   font-family: 'roboto', arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(238, 248, 253);
+}
+
+button {
+    font-weight: bold;
+    padding: 0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+    color: rgba(0,0,0);
+    background-color: rgb(134, 189, 253);
+    padding: 5px;
+}
+
+button:hover{
+    background-color: rgb(103, 171, 248);
+}
+
+.container{
+    max-width: 1700px;
+    margin: auto;
+}
+
+header{
+    background-color: rgb(130, 220, 255);
+    border-radius: 5px;
+    border-color: black;
+    
+}
+
+header a{
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 12px;
+}
+
+header .logo{
+    margin: 0;
+    
+}
+
+header .container{
+    display: flex;
+    align-items: center;
+}
+
+header nav{
+    display: flex;
+    flex-direction: row;
+    text-align: right;
+}
+
+.search button{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: none;
+    background-color: rgb(238, 248, 253);
+}
+
+.search button:hover{
+    background-color: rgb(196, 221, 233);
+}
+
+.search input{
+    flex: 100;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#hero{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+#hero button{
+    margin: 5px;
+    padding: px 20px;
+}
+
+#hero img
+{
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+#informacion h2 {
+    background-color: rgb(130, 220, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+#informacion .container{
+    text-align: center; 
+}
+
+#informacion .cartas{
+    display: flex;
+    align-items: stretch; 
+    justify-content: center;
+    margin: 20px auto;
+    gap: 20px;
+}
+
+.carta {
+    width: 300px;
+    height: 230px;
+    border: 2px solid black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.carta button{
+    display:flexbox;
+}
+
+footer {
+    display: flex;
+    background-color: rgb(171, 231, 255);
+}
+
+/* ===== Gestión de citas ===== */
+#questionary{
+    align-items: center;
+    text-align: center; 
+}
