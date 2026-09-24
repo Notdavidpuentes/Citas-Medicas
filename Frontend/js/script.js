@@ -22,7 +22,7 @@ formulario.addEventListener("submit", async (e) => {
 
     try {
 
-        const respuesta = await fetch("http://localhost:3000/citas", {
+        const respuesta = await fetch("https://citas-medicas-8jzn.onrender.com/citas", {
 
             method: "POST",
 
