@@ -41,7 +41,7 @@ router.post("/", (req, res) => {
     const numero_consultorio = 101;
     const estado_cita = 0; // Pendiente
 
-    // Validar que no exista ya una cita con la misma fecha, hora y medico
+    // Validar que no exista ya una cita con la misma fecha, hora y médico
     const sqlValidar = `
         SELECT * FROM cita
         WHERE fecha = ? AND hora = ? AND nombre_medico = ?
@@ -62,40 +62,34 @@ router.post("/", (req, res) => {
             });
         }
 
-    // Si no hay conflicto, se procede a insertar
-    const sql = `
-        INSERT INTO cita
-        (fecha,hora,nombre_medico,especialidad,numero_consultorio,estado_cita,nombre_paciente)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-    `;
+        // Si no hay conflicto, se procede a insertar
+        const sql = `
+            INSERT INTO cita
+            (fecha,hora,nombre_medico,especialidad,numero_consultorio,estado_cita,nombre_paciente)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        `;
 
-    conexion.query(
-        sql,
-        [
-            fecha,
-            hora,
-            nombre_medico,
-            especialidad,
-            numero_consultorio,
-            estado_cita,
-            nombre_paciente
-        ],
-        (error, resultado) => {
+        conexion.query(
+            sql,
+            [fecha, hora, nombre_medico, especialidad, numero_consultorio, estado_cita, nombre_paciente],
+            (error, resultado) => {
 
-            if (error) {
-                return res.status(500).json({
-                    mensaje: "Error al crear la cita",
-                    error: error.message
+                if (error) {
+                    return res.status(500).json({
+                        mensaje: "Error al crear la cita",
+                        error: error.message
+                    });
+                }
+
+                res.status(201).json({
+                    mensaje: "Cita creada correctamente",
+                    id: resultado.insertId
                 });
+
             }
+        );
 
-            res.status(201).json({
-                mensaje: "Cita creada correctamente",
-                id: resultado.insertId
-            });
-
-        }
-    );
+    });
 
 });
 
