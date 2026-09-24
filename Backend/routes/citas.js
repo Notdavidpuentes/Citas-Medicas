@@ -41,6 +41,28 @@ router.post("/", (req, res) => {
     const numero_consultorio = 101;
     const estado_cita = 0; // Pendiente
 
+    // Validar que no exista ya una cita con la misma fecha, hora y medico
+    const sqlValidar = `
+        SELECT * FROM cita
+        WHERE fecha = ? AND hora = ? AND nombre_medico = ?
+    `;
+
+    conexion.query(sqlValidar, [fecha, hora, nombre_medico], (errorValidar, citasExistentes) => {
+
+        if (errorValidar) {
+            return res.status(500).json({
+                mensaje: "Error al validar disponibilidad",
+                error: errorValidar.message
+            });
+        }
+
+        if (citasExistentes.length > 0) {
+            return res.status(409).json({
+                mensaje: "Ya existe una cita registrada en ese horario con este médico"
+            });
+        }
+
+    // Si no hay conflicto, se procede a insertar
     const sql = `
         INSERT INTO cita
         (fecha,hora,nombre_medico,especialidad,numero_consultorio,estado_cita,nombre_paciente)
